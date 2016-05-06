@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+eval $(@SCRIPT_BIN_PATH@/df-enable)
+"$@"

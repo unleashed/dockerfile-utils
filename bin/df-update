@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+eval $(@SCRIPT_BIN_PATH@/df-enable) \
+ && git clone --recursive --single-branch https://github.com/unleashed/dockerfile-utils.git /tmp/dockerfile-utils \
+ && pushd /tmp/dockerfile-utils > /dev/null \
+ && git checkout -f $(git tag --sort=version:refname | tail -n 1) \
+ && git submodule update --checkout \
+ && ./autogen.sh \
+ && ./configure --prefix="@SCRIPT_PREFIX_PATH@" "$@" \
+ && make install \
+ && popd > /dev/null && rm -rf /tmp/dockerfile-utils

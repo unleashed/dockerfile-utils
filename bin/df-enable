@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo ". @SCRIPT_LIB_PATH@/functions.sh"
